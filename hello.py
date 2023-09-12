@@ -1,13 +1,1 @@
-print(5)
-print(5)
-print(5)
-print(5)
-print(5)
-
-print(5)
-print(5)
-print(5)
-print(5)
-print(5)
-
-print(5)
+print("HELLO WORLD")
