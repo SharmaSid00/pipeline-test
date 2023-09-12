@@ -9,7 +9,7 @@ pipeline {
         stage('hello'){
             steps{
                 bat 'python hello.py'
-        
+                // bat 'automate_test.py'
             }
         }
     }
