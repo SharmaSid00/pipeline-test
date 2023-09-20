@@ -1,6 +1,11 @@
 import subprocess
 import shutil
 
+#BLOCK TO FETCH THE CODE FROM PERFOCE TO LOAD ON WORKSPACE
+
+
+
+
 project_to_be_adjusted= "input"
 
 ### command to be edited
@@ -29,7 +34,6 @@ if result.returncode == 0:
 else:
     print("Report generation failed.")
     exit(1)
-
 
 ##ARTIFACTS
 print("Archiving the report as a build artifact...")
