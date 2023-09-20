@@ -1,14 +1,10 @@
 pipeline {
     agent any
     stages{
-        stage('version'){
+        stage('Integration Test'){
             steps{
-                bat 'python --version'
-            }
-        }
-        stage('hello'){
-            steps{
-                bat '"C:\\Program Files\\parasoft_cpptest_professional-2022.2.0-win32.x86_64\\cpptest\\cpptestcli.exe"  -config "C:\\QualifiedParasoftConfig\\QualifiedParasoftConfig\\configs\\Stryker - Run Unit Tests.properties" -data "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST" -gpj   "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST\\AFMC\\.cpptest\\AFMC_ALU_Verification_Test\\" -report   C:\\Users\\ssharma42\\Desktop\\JENKINS_TASK\\report_1.pdf'
+                echo "Execution of Test"
+                bat '"C:\\Program Files\\parasoft_cpptest_professional-2022.2.0-win32.x86_64\\cpptest\\cpptestcli.exe"  -config "C:\\QualifiedParasoftConfig\\QualifiedParasoftConfig\\configs\\Stryker - Run Unit Tests.properties" -data "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST" -gpj   "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST\\AFMC\\" -report   C:\\Users\\ssharma42\\Desktop\\JENKINS_TASK\\report_1.pdf'
             }
         }
     }
