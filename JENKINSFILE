@@ -12,6 +12,13 @@ pipeline {
                 )
                 """
                 bat '"C:\\Program Files\\parasoft_cpptest_professional-2022.2.0-win32.x86_64\\cpptest\\cpptestcli.exe"  -config "C:\\QualifiedParasoftConfig\\QualifiedParasoftConfig\\configs\\Stryker - Run Unit Tests.properties" -data "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST" -gpj   "C:\\Users\\ssharma42\\Perforce\\ssharma42_XYZ_TEST\\AFMC\\trunk\\FMC_APP\\IntegrationTest" -report   "my-directory"'
+                def reportDir = "$WORKSPACE/my-directory"
+
+                def pdfFiles = fileExists(reportDir) ? dir(reportDir, "*.pdf") : []
+                pdfFiles.sort { a, b -> b.lastModified <=> a.lastModified }
+                def lastPdfFile = pdfFiles.last()
+                emailext body: 'This is sample Mail', to: 'sudhanshu.sharma@stryker.com', subject: 'Report', attachments: [lastPdfFile]
+
             }
         }
     }
