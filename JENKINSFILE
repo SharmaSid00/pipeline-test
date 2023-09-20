@@ -18,10 +18,12 @@ pipeline {
         }
     }
     post {
-            def reportDir = "$WORKSPACE/my-directory"
-            def pdfFiles = fileExists(reportDir) ? dir(reportDir, "*.pdf") : []
-            pdfFiles.sort { a, b -> b.lastModified <=> a.lastModified }
-            def lastPdfFile = pdfFiles.last()
-            emailext body: 'This is sample Mail', to: 'sudhanshu.sharma@stryker.com', subject: 'Report', attachments: [lastPdfFile]
+            always {
+                def reportDir = "$WORKSPACE/my-directory"
+                def pdfFiles = fileExists(reportDir) ? dir(reportDir, "*.pdf") : []
+                pdfFiles.sort { a, b -> b.lastModified <=> a.lastModified }
+                def lastPdfFile = pdfFiles.last()
+                emailext body: 'This is sample Mail', to: 'sudhanshu.sharma@stryker.com', subject: 'Report', attachments: [lastPdfFile]
+            }
     }
 }
